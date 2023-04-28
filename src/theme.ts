@@ -18,6 +18,6 @@ export const darkTheme: Theme = {
 export const getTheme =
     (prop: 'primaryColor' | 'backgroundColor' | 'secondaryColor') =>
     ({ theme }: { theme: Theme }) => {
-        console.log(prop + ': ' + theme[prop])
+        // console.log(prop + ': ' + theme[prop])
         return theme[prop]
     }

@@ -9,12 +9,12 @@ const StyledButton = styled.button`
     color: ${getTheme('secondaryColor')};
 `
 
-function App() {
+function Button({ onClick }: { onClick: () => void }) {
     return (
-        <StyledButton>
-            Sübmit that <span>shit</span> thing
+        <StyledButton onClick={onClick}>
+            Toggle <span>shit</span> dark mode
         </StyledButton>
     )
 }
 
-export default App
+export default Button

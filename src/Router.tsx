@@ -6,12 +6,11 @@ import { useColorSheme } from './useColorScheme'
 // https://medium.com/rbi-tech/theme-with-styled-components-and-typescript-209244ec15a3
 
 export const Router = () => {
-    const { isLightMode } = useColorSheme()
-    console.log(`is light mode: `, isLightMode)
+    const { isLightMode, toggleTheme } = useColorSheme()
     return (
         <>
             <ThemeProvider theme={isLightMode ? theme : darkTheme}>
-                <App />
+                <App toggleTheme={toggleTheme} />
             </ThemeProvider>
         </>
     )

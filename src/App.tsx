@@ -4,7 +4,7 @@ import { getTheme } from './theme'
 
 const StyledApp = styled.div`
     --primaryColor: ${({ theme }) => theme.primaryColor};
-    --secondaryColor: ${getTheme('secondarColor')};
+    --secondaryColor: ${getTheme('secondaryColor')};
     --backgroundColor: ${getTheme('backgroundColor')};
     background-color: var(--backgroundColor);
     h2 {
@@ -12,11 +12,11 @@ const StyledApp = styled.div`
     }
 `
 
-function App() {
+function App({ toggleTheme }: { toggleTheme: () => void }) {
     return (
         <StyledApp>
             <h2>hello würld</h2>
-            <Button />
+            <Button onClick={toggleTheme} />
         </StyledApp>
     )
 }

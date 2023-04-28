@@ -6,10 +6,21 @@ const isDark = () =>
 
 export const useColorSheme = () => {
     const [colorScheme, setColorScheme] = useState(isDark() ? 'dark' : 'light')
+    const [_, setOverriden] = useState(false)
+
+    const toggleTheme = () => {
+        const newColorScheme = colorScheme == 'light' ? 'dark' : 'light'
+        setColorScheme(newColorScheme)
+        setOverriden(true)
+    }
 
     useEffect(() => {
         const handleChange = (event: any) => {
-            setColorScheme(event.matches ? 'dark' : 'light')
+            setOverriden((overridden) => {
+                if (overridden) return true
+                setColorScheme(event.matches ? 'dark' : 'light')
+                return false
+            })
         }
         window
             .matchMedia('(prefers-color-scheme: dark)')
@@ -21,5 +32,5 @@ export const useColorSheme = () => {
         }
     }, [])
 
-    return { isLightMode: colorScheme == 'light' }
+    return { isLightMode: colorScheme == 'light', toggleTheme }
 }
